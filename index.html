@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Visite virtuelle test</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- sky = fond panoramique -->
+      <a-sky id="sky" src="https://github.com/kryoatom77/Visite-virtuelle/blob/main/PXL_20250917_120016883.PHOTOSPHERE.jpg" rotation="0 -90 0"></a-sky>
+
+      <!-- caméra avec curseur (pour cliquer dans la scène) -->
+      <a-entity camera look-controls>
+        <a-entity cursor="fuse: true; fuseTimeout: 1000"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: red; shader: flat">
+        </a-entity>
+      </a-entity>
+
+      <!-- hotspot pour aller à la deuxième photo -->
+      <a-entity id="toPhoto2"
+                geometry="primitive: sphere; radius: 0.3"
+                material="color: blue; opacity: 0.6"
+                position="2 1 -3"
+                event-set__click="_target: #sky; src: photo2.jpg">
+      </a-entity>
+
+      <!-- hotspot pour revenir à la première -->
+      <a-entity id="toPhoto1"
+                geometry="primitive: sphere; radius: 0.3"
+                material="color: green; opacity: 0.6"
+                position="-2 1 -3"
+                event-set__click="_target: #sky; src: photo1.jpg">
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
